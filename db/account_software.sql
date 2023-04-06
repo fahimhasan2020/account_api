@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2023 at 09:16 AM
+-- Generation Time: Apr 06, 2023 at 11:51 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -54,8 +54,19 @@ CREATE TABLE `deposit` (
   `amount` int(10) NOT NULL,
   `category` varchar(100) NOT NULL,
   `user` int(10) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `deposit`
+--
+
+INSERT INTO `deposit` (`id`, `title`, `details`, `amount`, `category`, `user`, `date`) VALUES
+(3, 'salary', 'salary monthly', 40000, 'salary', 1, '4/6/2023'),
+(4, 'salary', 'salary monthly', 40000, 'salary', 1, '4/6/2023'),
+(5, 'salary', 'salary monthly', 40000, 'salary', 1, '4/6/2023'),
+(6, 'salary', 'salary monthly', 40000, 'salary', 1, '4/6/2023'),
+(7, 'salary', 'salary monthly', 40000, 'salary', 1, '4/6/2023');
 
 -- --------------------------------------------------------
 
@@ -70,8 +81,18 @@ CREATE TABLE `expense` (
   `category` varchar(100) NOT NULL,
   `amount` int(10) NOT NULL,
   `user` int(10) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `expense`
+--
+
+INSERT INTO `expense` (`id`, `title`, `details`, `category`, `amount`, `user`, `date`) VALUES
+(2, 'bills', 'house keeper bill', 'bills', 2000, 1, '4/6/2023'),
+(3, 'bills', 'house keeper bill', 'bills', 2000, 1, '4/6/2023'),
+(4, 'bills', 'house keeper bill', 'bills', 2000, 1, '4/6/2023'),
+(5, 'bills', 'house keeper bill', 'bills', 2000, 1, '4/6/2023');
 
 -- --------------------------------------------------------
 
@@ -83,8 +104,21 @@ CREATE TABLE `saving` (
   `id` int(10) NOT NULL,
   `title` varchar(100) NOT NULL,
   `amount` int(10) NOT NULL,
-  `user` int(10) NOT NULL
+  `user` int(10) NOT NULL,
+  `date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `saving`
+--
+
+INSERT INTO `saving` (`id`, `title`, `amount`, `user`, `date`) VALUES
+(3, 'month end saving', 1000, 1, '4/6/2023'),
+(4, 'month end saving', 1000, 1, '4/6/2023'),
+(5, 'month end saving', 2000, 1, '4/6/2023'),
+(6, 'month end saving', 2000, 1, '4/6/2023'),
+(7, 'month end saving', 2000, 1, '4/6/2023'),
+(8, 'month end saving', 2000, 1, '4/6/2023');
 
 -- --------------------------------------------------------
 
@@ -98,9 +132,16 @@ CREATE TABLE `upcoming_deposit` (
   `amount` int(10) NOT NULL,
   `details` varchar(500) NOT NULL,
   `user` int(10) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` varchar(100) NOT NULL,
   `category` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `upcoming_deposit`
+--
+
+INSERT INTO `upcoming_deposit` (`id`, `title`, `amount`, `details`, `user`, `date`, `category`) VALUES
+(1, 'month end saving', 2000, 'house keeper bill', 1, '4/6/2023', 0);
 
 -- --------------------------------------------------------
 
@@ -115,8 +156,15 @@ CREATE TABLE `upcoming_expense` (
   `amount` int(10) NOT NULL,
   `user` int(10) NOT NULL,
   `category` varchar(100) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `upcoming_expense`
+--
+
+INSERT INTO `upcoming_expense` (`id`, `title`, `details`, `amount`, `user`, `category`, `date`) VALUES
+(1, 'month end saving', 'house keeper bill', 2000, 1, 'bills', '4/6/2023');
 
 -- --------------------------------------------------------
 
@@ -199,31 +247,31 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `saving`
 --
 ALTER TABLE `saving`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `upcoming_deposit`
 --
 ALTER TABLE `upcoming_deposit`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `upcoming_expense`
 --
 ALTER TABLE `upcoming_expense`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

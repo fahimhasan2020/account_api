@@ -8,17 +8,16 @@ if(isset($_POST['title'])){
   $category = $_POST['category'];
   $user = $_POST['user'];
   $date = $_POST['date'];
-  $stmt = $conn->prepare("INSERT INTO deposit (title, details, amount, category, user, date) VALUES ('$title', '$details', '$amount', '$category', '$user','$date')");
+  $stmt = $conn->prepare("INSERT INTO expense (title, details, amount, category, user, date) VALUES ('$title', '$details', '$amount', '$category', '$user','$date')");
   $stmt->execute();
-  $response = array("success"=>"Deposite saved");
+  $response = array("success"=>"Expense saved");
   header('Content-Type: application/json');
   echo json_encode($response);
 }
 
 
 if(isset($_GET['values'])){
-    
-    $stmt = $conn->prepare("SELECT * FROM deposit");
+    $stmt = $conn->prepare("SELECT * FROM expense");
     $users = $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json');
@@ -27,7 +26,7 @@ if(isset($_GET['values'])){
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
   $id = $_GET['id'];
-  $stmt = $conn->prepare("DELETE FROM deposit WHERE id=:id");
+  $stmt = $conn->prepare("DELETE FROM expense WHERE id=:id");
   $stmt->bindParam(':id', $id);
   $stmt->execute();
   header('Content-Type: application/json');
